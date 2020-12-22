@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  font-weight: 400;
+  height: 100vh;
+  background: #111;
+  display: flex;
+  align-items: center;
+}
+
+.cards {
+  background: slategray;
+  position: relative;
+  width: 80%;
+  height: 80vh;
+  margin: auto;
+  border-radius: 5px;
+}
+
+.card__header {
+  background-image: url("../images/pexels-petricaragea-alexandru-4562937.jpg");
+  background-size: cover;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  padding: 25px;
+  color: white;
+  display: flex;
+  border-radius: 5px;
+  transition: top 300ms ease-out, left 300ms ease-out, right 300ms ease-out,
+    bottom 300ms ease-out;
+}
+
+.card__header:hover {
+  top: 25px;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
+}
+
+.card__title {
+  font-weight: 300;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.card__more-info,
+.card__less-info {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-top: auto;
+  border: 0px;
+  transition: transform 500ms ease-in, background 200ms ease-out;
+}
+
+.card__less-info:focus,
+.card__less-info:hover,
+.card__more-info:hover,
+.card__more-info:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.card__more-info {
+  transition-delay: 500ms, 0ms;
+}
+.card__less-info {
+  margin-left: auto;
+  transform: translateX(120%);
+}
+
+.card__content {
+  position: absolute;
+  top: 73%;
+  padding: 25px;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__body {
+  margin-bottom: 15px;
+  color: aliceblue;
+}
+
+.heart {
+  --size: 1.5rem;
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  padding-left: 1rem;
+  transition: transform 300ms cubic-bezier(0.38, 0.5, 0.5, 1.5);
+}
+
+.heart__checkbox {
+  transform: rotate(45deg);
+  appearance: none;
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -50%;
+  left: 45%;
+  border-radius: 50% 0 0 0;
+  background: rgba(green, 0.5);
+  z-index: 100;
+  cursor: pointer;
+}
+
+.heart__checkbox:focus {
+  outline: none;
+}
+
+.heart__checkbox:checked ~ .heart__icon {
+  background: red;
+}
+
+.heart:hover {
+  transform: scale(1.2);
+}
+
+.heart__icon {
+  transform: rotate(45deg);
+  width: var(--size);
+  height: var(--size);
+  background: aliceblue;
+  position: absolute;
+}
+
+.heart__icon::before,
+.heart__icon::after {
+  content: "";
+  display: block;
+  background: inherit;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart__icon::before {
+  top: 0;
+  left: -50%;
+}
+.heart__icon::after {
+  top: -50%;
+  left: 0%;
+}
+
+/* Open and close card content*/
+.card--open .card__header {
+  bottom: 25%;
+  left: 25px;
+  right: 25px;
+  top: 25px;
+}
+.card--open .card__more-info {
+  transform: translateX(-120%);
+  transition-delay: 0ms;
+}
+.card--open .card__less-info {
+  transform: translateX(0%);
+  transition-delay: 300ms, 0ms;
+}
